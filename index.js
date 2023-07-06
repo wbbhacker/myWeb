@@ -1,15 +1,17 @@
 const express = require('express')
 const { json } = require('express/lib/response')
 const app = express()
-const enCkb = [
+const ckb = [
   {
     "id": "area_chart",
+    "zh-cn": '面积图',
     "name": "Area Chart",
     "alias": [],
     "family": [
       "AreaCharts"
     ],
     "def": "An area chart uses series of line segments with overlapped areas to show the change in data in a ordinal dimension.",
+    "def-zh-cn": '使用带填充区域的线段显示数据在一个具有顺序性的维度上的变化。',
     "purpose": [
       "Comparison",
       "Trend",
@@ -56,6 +58,7 @@ const enCkb = [
   },
   {
     "id": "line_chart",
+    'zh-cn': '折线图',
     "name": "Line Chart",
     "alias": [
       "Lines"
@@ -64,6 +67,7 @@ const enCkb = [
       "LineCharts"
     ],
     "def": "A line chart uses lines with segments to show changes in data in a ordinal dimension.",
+    "def-zh-cn": "使用折线的线段显示数据在一个具有顺序性的维度上的变化",
     "purpose": [
       "Comparison",
       "Trend",
@@ -110,6 +114,7 @@ const enCkb = [
   },
   {
     "id": "column_chart",
+    "zh-cn": "柱状图",
     "name": "Column Chart",
     "alias": [
       "Columns"
@@ -118,6 +123,7 @@ const enCkb = [
       "ColumnCharts"
     ],
     "def": "A column chart uses series of columns to display the value of the dimension. The horizontal axis shows the classification dimension and the vertical axis shows the corresponding value.",
+    "def-zh-cn": "使用柱形显示维度的数值。横轴显示分类维度，纵轴显示相应的值。",
     "purpose": [
       "Comparison",
       "Distribution",
@@ -157,6 +163,7 @@ const enCkb = [
   },
   {
     "id": "pie_chart",
+    "zh-cn": "饼图",
     "name": "Pie Chart",
     "alias": [
       "Circle Chart",
@@ -166,6 +173,7 @@ const enCkb = [
       "PieCharts"
     ],
     "def": "A pie chart is a chart that the classification and proportion of data are represented by the color and arc length (angle, area) of the sector.",
+    "def-zh-cn": "通过扇形区块的颜色和弧长（角度、面积）来展现数据的分类和占比情况。",
     "purpose": [
       "Comparison",
       "Composition",
@@ -206,6 +214,7 @@ const enCkb = [
   },
   {
     "id": "scatter_plot",
+    "zh-cn": "散点图",
     "name": "Scatter Plot",
     "alias": [
       "Scatter Chart",
@@ -215,6 +224,7 @@ const enCkb = [
       "ScatterCharts"
     ],
     "def": "A scatter plot is a type of plot or mathematical diagram using Cartesian coordinates to display values for typically two variables for series of data.",
+    "def-zh-cn": "散点图是将所有的数据以不同颜色的点的形式展现在平面直角坐标系上的统计图表。",
     "purpose": [
       "Comparison",
       "Distribution",
@@ -253,38 +263,6 @@ const enCkb = [
   }
 ]
 
-const cnCkb = [
-  {
-    "name": "面积图",
-    "alias": [],
-    "def": "使用带填充区域的线段显示数据在一个具有顺序性的维度上的变化。"
-  },
-  {
-    "name": "折线图",
-    "alias": [
-      "折线图",
-      "线图"
-    ],
-    "def": "使用折线的线段显示数据在一个具有顺序性的维度上的变化。"
-  },
-  {
-    "name": "柱状图",
-    "alias": [
-      "柱形图"
-    ],
-    "def": "使用柱形显示维度的数值。横轴显示分类维度，纵轴显示相应的值。"
-  },
-  {
-    "name": "饼图",
-    "alias": [],
-    "def": "通过扇形区块的颜色和弧长（角度、面积）来展现数据的分类和占比情况。"
-  },
-  {
-    "name": "散点图",
-    "alias": [],
-    "def": "散点图是将所有的数据以不同颜色的点的形式展现在平面直角坐标系上的统计图表。"
-  }
-]
 
 const concepts = {
   "family": {
@@ -378,12 +356,12 @@ const concepts = {
     "Not Recommended": "不推荐"
   }
 }
+
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/funbot/ckb', (req, res) => {
   const result = {
-    en: enCkb,
-    cn: cnCkb,
-    concepts: concepts
+    ckb,
+    concepts
   }
   res.send(result)
 })
